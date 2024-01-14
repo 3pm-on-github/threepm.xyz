@@ -1,0 +1,20 @@
+body {
+    background: linear-gradient(to right, #000028, #0000AA);
+}
+
+h1, h2, h3, h4, h5, h6, p, b, button {
+    color: #0000FF;
+}
+
+.titleorlogoidk {
+    margin-left: 575px;
+    margin-top: 100px;
+}
+
+button {
+    margin-left: 670px;
+    margin-top: 50px;
+    background: none;
+    border-radius: 50px;
+    border-color: #000000;
+}
