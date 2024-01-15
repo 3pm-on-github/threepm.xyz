@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.getElementById("rickroll").addEventListener("loadedmetadata", () => {
     setTimeout(() => {
         document.getElementById("rickroll").remove()
         function loadBLCK() {
