@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
+a {
+    color: rgb(0, 175, 255);
+}
+
 body {
     background-color: rgb(50, 50, 50);
     font-family: "Pixelify Sans", sans-serif;
@@ -14,4 +19,9 @@ body {
 
 .coolwebsitestext {
     margin-left: 600px;
+}
+
+.addmy88x31s {
+    margin-left: 595px;
+    font-size: 30px;
 }
