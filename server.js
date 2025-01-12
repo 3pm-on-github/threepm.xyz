@@ -6,10 +6,9 @@ const path = require('path');
 
 const port = 7008;
 
-var visitorcount = 0;
-
 // Create the server
 const server = http.createServer((req, res) => {
+    var visitorcount = 0;
     if (req.url === "/") {
         const htmlPath = path.join(__dirname, 'index.html');
 
@@ -61,6 +60,7 @@ const server = http.createServer((req, res) => {
         res.end('you found an easter egg!!! anyway im a teapot');
     } else if (req.url == "/addvisitor") {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.end("done");
         visitorcount++;
     } else if (req.url == "/visitorcount") {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
