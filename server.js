@@ -64,7 +64,7 @@ const server = http.createServer((req, res) => {
         visitorcount++;
     } else if (req.url == "/visitorcount") {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end(visitorcount);
+        res.end(toString(visitorcount));
     } else if (req.url == "/script.js") {
         const jsPath = path.join(__dirname, 'script.js');
         fs.readFile(jsPath, (err, data) => {
