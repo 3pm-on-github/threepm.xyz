@@ -72,7 +72,7 @@ const server = http.createServer((req, res) => {
                 res.writeHead(404, { 'Content-Type': 'text/plain' });
                 res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: 3pmspublicemail@gachaytb3.org');
             } else {
-                res.writeHead(200, { 'Content-Type': 'text/js' });
+                res.writeHead(200, { 'Content-Type': 'text/javascript' });
                 res.end(data);
             }
         });
