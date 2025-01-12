@@ -1,4 +1,4 @@
-console.log("guh")
+console.log("rah")
 fetch("https://gachaytb3.org/addvisitor");
 
 fetch("https://gachaytb3.org/visitorcount").then(d => {
