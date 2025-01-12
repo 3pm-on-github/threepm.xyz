@@ -65,6 +65,28 @@ const server = http.createServer((req, res) => {
     } else if (req.url == "/visitorcount") {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end(visitorcount);
+    } else if (req.url == "/script.js") {
+        const jsPath = path.join(__dirname, 'script.js');
+        fs.readFile(jsPath, (err, data) => {
+            if (err) {
+                res.writeHead(404, { 'Content-Type': 'text/plain' });
+                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: 3pmspublicemail@gachaytb3.org');
+            } else {
+                res.writeHead(200, { 'Content-Type': 'text/js' });
+                res.end(data);
+            }
+        });
+    } else if (req.url == "/assets/rpilogo.webp") {
+        const jsPath = path.join(__dirname, '/assets/rpilogo.webp');
+        fs.readFile(jsPath, (err, data) => {
+            if (err) {
+                res.writeHead(404, { 'Content-Type': 'text/plain' });
+                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: 3pmspublicemail@gachaytb3.org');
+            } else {
+                res.writeHead(200, { 'Content-Type': 'image/webp' });
+                res.end(data);
+            }
+        });
     } else {
         res.writeHead(404, { 'Content-Type': 'text/plain' });
         res.end('this webpage doesnt exist, might go back?');
