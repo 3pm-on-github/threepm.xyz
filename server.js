@@ -59,12 +59,12 @@ const server = http.createServer((req, res) => {
         res.writeHead(418, { 'Content-Type': 'text/plain' });
         res.end('you found an easter egg!!! anyway im a teapot');
     } else if (req.url == "/addvisitor") {
+        visitorcount++;
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end("done");
-        visitorcount++;
     } else if (req.url == "/visitorcount") {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end(toString(visitorcount));
+        res.end(String(visitorcount));
     } else if (req.url == "/script.js") {
         const jsPath = path.join(__dirname, 'script.js');
         fs.readFile(jsPath, (err, data) => {
