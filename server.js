@@ -59,7 +59,7 @@ const server = http.createServer((req, res) => {
         res.writeHead(418, { 'Content-Type': 'text/plain' });
         res.end('you found an easter egg!!! anyway im a teapot');
     } else if (req.url == "/addvisitor") {
-        visitorcount+=1;
+        visitorcount = visitorcount + 1;
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end("done");
     } else if (req.url == "/visitorcount") {
