@@ -37,3 +37,19 @@ body {
 .uc3 {
     margin-left: 450px;
 }
+
+.hostedonrpi {
+    margin-left: 525px;
+    margin-top: 220px;
+}
+
+.hostedon {
+    position: absolute;
+
+}
+.rpi {
+    position: absolute;
+    margin-top: -5px;
+    margin-left: 165px;
+    height: 100px;
+}
