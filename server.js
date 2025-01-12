@@ -6,9 +6,9 @@ const path = require('path');
 
 const port = 7008;
 
-// Create the server
+let visitorcount = 0;
+
 const server = http.createServer((req, res) => {
-    var visitorcount = 0;
     if (req.url === "/") {
         const htmlPath = path.join(__dirname, 'index.html');
 
@@ -77,7 +77,7 @@ const server = http.createServer((req, res) => {
             }
         });
     } else if (req.url == "/assets/rpilogo.webp") {
-        const jsPath = path.join(__dirname, '/assets/rpilogo.webp');
+        const jsPath = path.join(__dirname, 'assets', 'rpilogo.webp');
         fs.readFile(jsPath, (err, data) => {
             if (err) {
                 res.writeHead(404, { 'Content-Type': 'text/plain' });

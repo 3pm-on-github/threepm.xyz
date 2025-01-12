@@ -1,7 +1,9 @@
-console.log("rah")
+console.log("rah");
 fetch("https://gachaytb3.org/addvisitor");
 
 fetch("https://gachaytb3.org/visitorcount").then((response) => {
-        console.log(response.text());
-        document.getElementById("visitors").innerText = "Visitors: " + response.text();
+    response.text().then((text) => {
+        console.log(text);
+        document.getElementById("visitors").innerText = "Visitors: " + text;
     });
+});
