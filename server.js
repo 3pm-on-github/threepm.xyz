@@ -55,6 +55,18 @@ const server = http.createServer((req, res) => {
                 res.end(data);
             }
         });
+    } else if (req.url === '/coolmusics') {
+        const htmlPath = path.join(__dirname, 'coolmusics', 'index.html');
+
+        fs.readFile(htmlPath, (err, data) => {
+            if (err) {
+                res.writeHead(404, { 'Content-Type': 'text/plain' });
+                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: 3pmspublicemail@gachaytb3.org');
+            } else {
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.end(data);
+            }
+        });
     } else if (req.url === '/teapot') {
         res.writeHead(418, { 'Content-Type': 'text/plain' });
         res.end('you found an easter egg!!! anyway im a teapot');
