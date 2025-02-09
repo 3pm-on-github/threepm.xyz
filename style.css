@@ -29,6 +29,7 @@ body {
 .coolmusics {
     margin-left: 580px;
     font-size: 30px;
+    display: block;
 }
 
 .uc1 {
