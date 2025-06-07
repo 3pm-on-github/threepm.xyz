@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>3pm's website | nlang</title>
+        <style>
+@import url('https://fonts.googleapis.com/css2?family=Nova+Square&display=swap');
+
+body {
+    background-color: rgb(50, 50, 50);
+    font-family: "Nova Square", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+}
+
+h3 {
+    font-family: sans-serif;
+}
+        </style>
+    </head>
+    <body>
+        <h1 style="text-align: center;">nlang</h1>
+        <p>nlang is a language consisted of not letters, but numbers. This page is all about this language, and also the official nlang translator.</p>
+        <h2>How to learn nlang (w/ examples)</h2>
+        <p>nlang is based on English. So you don't need to learn any words, you only need to remember the numbers that correspond to the letters. nlang does not have any ponctuation nor any lowercase letters or numbers. It only has uppercase letters. nlang is written with numbers because humans can remember numbers better than letters.</p>
+        <p>Here is how to learn nlang; it's pretty straightforward. First of all, an nlang letter is 2 numbers long. 00 is space. Numbers from 01-26 are letters from A-Z.</p>
+        <h3>Example: HELLO WORLD -> 0805121215002315181204</h3>
+        <h2>Translator</h2>
+        <p>Here is an English to/from nlang translator.</p>
+        <h4>English to nlang</h4>
+        <textarea id="english1" placeholder="English"></textarea><br><br>
+        <button id="translate1">Translate</button>
+        <p id="nlang1">nlang</p>
+        <h4>nlang to English</h4>
+        <textarea id="nlang2" placeholder="nlang"></textarea><br><br>
+        <button id="translate2">Translate</button>
+        <p id="english2">English</p>
+        <script>
+            const english1 = document.getElementById("english1")
+            const translate1 = document.getElementById("translate1")
+            const nlang1 = document.getElementById("nlang1")
+            const nlang2 = document.getElementById("nlang2")
+            const translate2 = document.getElementById("translate2")
+            const english2 = document.getElementById("english2")
+            function tonlang(input) {
+                return input
+                    .split('')
+                    .map(char => {
+                    if (char === ' ') return '00';
+                    const lower = char.toLowerCase();
+                    if (lower >= 'a' && lower <= 'z') {
+                        return String(lower.charCodeAt(0) - 96).padStart(2, '0');
+                    }
+                    return '';
+                    })
+                    .join('');
+            }
+            function toEnglish(input) {
+                let result = '';
+                for (let i = 0; i < input.length; i += 2) {
+                    const chunk = input.slice(i, i + 2);
+                    if (chunk === '00') {
+                        result += ' ';
+                    } else {
+                        const num = parseInt(chunk, 10);
+                        if (num >= 1 && num <= 26) {
+                            result += String.fromCharCode(num + 96); // 1 → 'a', ..., 26 → 'z'
+                        }
+                    }
+                }
+                return result.toUpperCase();
+            }
+            translate1.onclick = () => {
+                nlang1.innerText = tonlang(english1.value)
+            }
+            translate2.onclick = () => {
+                english2.innerText = toEnglish(nlang2.value)
+            }
+        </script>
+    </body>
+</html>

@@ -6,12 +6,11 @@ const path = require('path');
 
 const port = 7008;
 
-let visitorcount = 0;
+let visitorcount = 175;
 
 const server = http.createServer((req, res) => {
     if (req.url === "/") {
         const htmlPath = path.join(__dirname, 'index.html');
-
         fs.readFile(htmlPath, (err, data) => {
             if (err) {
                 res.writeHead(404, { 'Content-Type': 'text/plain' });

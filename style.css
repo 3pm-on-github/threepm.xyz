@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nova+Square&display=swap');
 
 a {
     color: rgb(0, 175, 255);
@@ -6,8 +6,7 @@ a {
 
 body {
     background-color: rgb(50, 50, 50);
-    font-family: "Pixelify Sans", sans-serif;
-    font-optical-sizing: auto;
+    font-family: "Nova Square", sans-serif;
     font-weight: 400;
     font-style: normal;
     color: white;
@@ -28,6 +27,11 @@ body {
 
 .coolmusics {
     margin-left: 580px;
+    font-size: 30px;
+    display: block;
+}
+.projects {
+    margin-left: 635px;
     font-size: 30px;
     display: block;
 }
