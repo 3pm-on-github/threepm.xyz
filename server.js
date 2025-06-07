@@ -14,7 +14,7 @@ const server = http.createServer((req, res) => {
         fs.readFile(htmlPath, (err, data) => {
             if (err) {
                 res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: 3pmspublicemail@gachaytb3.org');
+                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: 3pmspublicemail@threepm.xyz');
             } else {
                 res.writeHead(200, { 'Content-Type': 'text/html' });
                 res.end(data);
@@ -25,7 +25,7 @@ const server = http.createServer((req, res) => {
         fs.readFile(cssPath, (err, data) => {
             if (err) {
                 res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: 3pmspublicemail@gachaytb3.org');
+                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: 3pmspublicemail@threepm.xyz');
             } else {
                 res.writeHead(200, { 'Content-Type': 'text/css' });
                 res.end(data);
@@ -48,7 +48,7 @@ const server = http.createServer((req, res) => {
         fs.readFile(htmlPath, (err, data) => {
             if (err) {
                 res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: 3pmspublicemail@gachaytb3.org');
+                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: 3pmspublicemail@threepm.xyz');
             } else {
                 res.writeHead(200, { 'Content-Type': 'text/html' });
                 res.end(data);
@@ -60,7 +60,43 @@ const server = http.createServer((req, res) => {
         fs.readFile(htmlPath, (err, data) => {
             if (err) {
                 res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: 3pmspublicemail@gachaytb3.org');
+                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: 3pmspublicemail@threepm.xyz');
+            } else {
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.end(data);
+            }
+        });
+    } else if (req.url === '/projects') {
+        const htmlPath = path.join(__dirname, 'projects', 'index.html');
+
+        fs.readFile(htmlPath, (err, data) => {
+            if (err) {
+                res.writeHead(404, { 'Content-Type': 'text/plain' });
+                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: 3pmspublicemail@threepm.xyz');
+            } else {
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.end(data);
+            }
+        });
+    } else if (req.url === '/projects/nlang') {
+        const htmlPath = path.join(__dirname, 'projects', 'nlang', 'index.html');
+
+        fs.readFile(htmlPath, (err, data) => {
+            if (err) {
+                res.writeHead(404, { 'Content-Type': 'text/plain' });
+                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: 3pmspublicemail@threepm.xyz');
+            } else {
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.end(data);
+            }
+        });
+    } else if (req.url === '/projects/archive') {
+        const htmlPath = path.join(__dirname, 'projects', 'archive', 'index.html');
+
+        fs.readFile(htmlPath, (err, data) => {
+            if (err) {
+                res.writeHead(404, { 'Content-Type': 'text/plain' });
+                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: 3pmspublicemail@threepm.xyz');
             } else {
                 res.writeHead(200, { 'Content-Type': 'text/html' });
                 res.end(data);
@@ -81,7 +117,7 @@ const server = http.createServer((req, res) => {
         fs.readFile(jsPath, (err, data) => {
             if (err) {
                 res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: 3pmspublicemail@gachaytb3.org');
+                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: 3pmspublicemail@threepm.xyz');
             } else {
                 res.writeHead(200, { 'Content-Type': 'text/javascript' });
                 res.end(data);
@@ -92,7 +128,7 @@ const server = http.createServer((req, res) => {
         fs.readFile(jsPath, (err, data) => {
             if (err) {
                 res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: 3pmspublicemail@gachaytb3.org');
+                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: 3pmspublicemail@threepm.xyz');
             } else {
                 res.writeHead(200, { 'Content-Type': 'image/webp' });
                 res.end(data);
