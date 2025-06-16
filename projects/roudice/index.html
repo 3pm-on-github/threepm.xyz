@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3pm's website | roudice</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+body {
+    background-color: rgb(50, 50, 50);
+    font-family: "Nunito", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+}
+
+button {
+    padding: 10px;
+    background: #c4b700;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+}
+
+button:hover {
+    background: #a78e00;
+}
+
+
+.die {
+    font-size: 80px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+    border-radius: 16px;
+    background: #444;
+    display: none;
+}
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">roudice (roulette, dice edition)</h1>
+    <h2 style="text-align: center;">note: i, 3pm, am not responsible for any gambling addiction caused by roudice.</h2>
+    <br>
+    <h3 style="text-align: center;" id="moneytext">You currently have: moneyÐ</h3>
+    
+    <button id="rollbtn">Roll</button>
+
+    <div class="die" id="die1">⚀</div>
+    <div class="die" id="die2">⚁</div>
+    <div class="die" id="die3">⚂</div>
+    <div class="die" id="die4">⚂</div>
+    <p id="total" style="display:none">Total: Color Number</p>
+    <p id="wonornot" style="display:none">You idk</p>
+    <script>
+class moneysys {
+    constructor(startingAmount = 1000) {
+        const saved = localStorage.getItem('money_balance');
+        this.balance = saved !== null ? parseInt(saved) : startingAmount;
+    }
+
+    save() {
+        localStorage.setItem('money_balance', this.balance.toString());
+    }
+
+    getBalance() {
+        return this.balance;
+    }
+
+    add(amount) {
+        if (amount > 0) {
+            this.balance += amount;
+            this.save();
+        }
+    }
+
+    subtract(amount) {
+        if (amount > 0 && this.balance >= amount) {
+            this.balance -= amount;
+            this.save();
+            return true;
+        }
+        return false;
+    }
+
+    bet(amount, didWin, multiplier = 2) {
+        if (didWin) {
+            this.add(amount * multiplier);
+            return true;
+        }
+        return false;
+    }
+}
+
+var multiplier = 1
+const wallet = new moneysys(1000);
+const moneytext = document.getElementById("moneytext")
+const rollbtn = document.getElementById("rollbtn")
+const die1 = document.getElementById("die1")
+const die2 = document.getElementById("die2")
+const die3 = document.getElementById("die3")
+const die4 = document.getElementById("die4")
+const total = document.getElementById("total")
+const wonornot = document.getElementById("wonornot")
+const diesymbols = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"]
+wallet.save()
+moneytext.innerText = "You currently have: " + wallet.getBalance() + "Ð"
+rollbtn.onclick = () => {
+    const whattobeton = prompt("What do you want to bet on? (black, red or a number from 1 to 24)")
+    const amounttobet = prompt("How much do you want to bet?")
+    if (amounttobet > wallet.getBalance()) {
+        alert("Not enough money")
+    } else if (amounttobet < 10) {
+        alert("Bet amount must be above 9")
+    } else {
+        if (whattobeton == "black" || whattobeton == "red" || (whattobeton > 0 && whattobeton < 25)) { 
+            const random1 = Math.floor(Math.random() * 6) + 1;
+            const random2 = Math.floor(Math.random() * 6) + 1;
+            const random3 = Math.floor(Math.random() * 6) + 1;
+            const random4 = Math.floor(Math.random() * 6) + 1;
+            var color1 = "black"
+            var color2 = "black"
+            var color3 = "black"
+            var color4 = "black"
+            die1.style.display = "block"
+            die1.innerText = diesymbols[random1 - 1]
+            if(random1 % 2 === 1){color1="red";die1.style.backgroundColor = "#FF0000";}else{color1="black";die1.style.backgroundColor = "#444";}
+            die2.style.display = "block"
+            die2.innerText = diesymbols[random2 - 1]
+            if(random2 % 2 === 1){color2="red";die2.style.backgroundColor = "#FF0000";}else{color2="black";die2.style.backgroundColor = "#444";}
+            die3.style.display = "block"
+            die3.innerText = diesymbols[random3 - 1]
+            if(random3 % 2 === 1){color3="red";die3.style.backgroundColor = "#FF0000";}else{color3="black";die3.style.backgroundColor = "#444";}
+            die4.style.display = "block"
+            die4.innerText = diesymbols[random4 - 1]
+            if(random4 % 2 === 1){color4="red";die4.style.backgroundColor = "#FF0000";}else{color4="black";die4.style.backgroundColor = "#444";}
+            const totalnumber = random1 + random2 + random3 + random4
+            const finalcolor = ((arr) => {
+                const min = Math.min(...arr);
+                return (min % 2 === 1) ? 'red' : 'black';
+            })([random1, random2, random3, random4]);
+            total.style.display = "block"
+            total.innerText = "Total: " + finalcolor + " " + totalnumber
+            wonornot.style.display = "block"
+            if (whattobeton == "black" || whattobeton == "red") {
+                if (whattobeton == finalcolor) {
+                    wonornot.innerText = "You won!"
+                    multiplier = multiplier + 0.1
+                    wallet.bet(amounttobet, true, multiplier)
+                } else {
+                    wonornot.innerText = "You lost!"
+                    wallet.bet(amounttobet, false, multiplier)
+                }
+            } else {
+                if (whattobeton == totalnumber) {
+                    wonornot.innerText = "You won!"
+                    multiplier = multiplier + 0.1
+                    wallet.bet(amounttobet, true, multiplier)
+                } else {
+                    wonornot.innerText = "You lost!"
+                    wallet.bet(amounttobet, false, multiplier)
+                }
+            }
+            wallet.save()
+            moneytext.innerText = "You currently have: " + wallet.getBalance() + "Ð"
+        } else {
+            alert("Invalid bet")
+        }
+    }
+}
+
+    </script>
+</body>
+</html>
