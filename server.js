@@ -90,8 +90,8 @@ const server = http.createServer((req, res) => {
                 res.end(data);
             }
         });
-    } else if (req.url === '/projects/archive') {
-        const htmlPath = path.join(__dirname, 'projects', 'archive', 'index.html');
+    } else if (req.url === '/projects/roudice') {
+        const htmlPath = path.join(__dirname, 'projects', 'roudice', 'index.html');
 
         fs.readFile(htmlPath, (err, data) => {
             if (err) {
@@ -123,8 +123,8 @@ const server = http.createServer((req, res) => {
                 res.end(data);
             }
         });
-    } else if (req.url == "/assets/rpilogo.webp") {
-        const jsPath = path.join(__dirname, 'assets', 'rpilogo.webp');
+    } else if (req.url == "/assets/lilguy.webp") {
+        const jsPath = path.join(__dirname, 'assets', 'lil guy.webp');
         fs.readFile(jsPath, (err, data) => {
             if (err) {
                 res.writeHead(404, { 'Content-Type': 'text/plain' });
