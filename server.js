@@ -1,12 +1,13 @@
 // cloudflare server, DO NOT STOP!!!!!
 // ip: https://localhost:7008
+// use nodemon server.js to run this server
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
 const port = 7008;
 
-let visitorcount = 175;
+let visitorcount = 260; // initial visitor count
 
 const server = http.createServer((req, res) => {
     if (req.url === "/") {
@@ -129,11 +130,11 @@ const server = http.createServer((req, res) => {
     } else if (req.url === '/teapot') {
         res.writeHead(418, { 'Content-Type': 'text/plain' });
         res.end('you found an easter egg!!! anyway im a teapot');
-    } else if (req.url == "/addvisitor") {
+    } else if (req.url == "/api/v1/addvisitor") {
         visitorcount = visitorcount + 1;
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end("done");
-    } else if (req.url == "/visitorcount") {
+    } else if (req.url == "/api/v1/visitorcount") {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end(String(visitorcount));
     } else if (req.url == "/script.js") {
@@ -149,6 +150,17 @@ const server = http.createServer((req, res) => {
         });
     } else if (req.url == "/assets/lilguy.webp") {
         const jsPath = path.join(__dirname, 'assets', 'lil guy.webp');
+        fs.readFile(jsPath, (err, data) => {
+            if (err) {
+                res.writeHead(404, { 'Content-Type': 'text/plain' });
+                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: 3pmspublicemail@threepm.xyz');
+            } else {
+                res.writeHead(200, { 'Content-Type': 'image/webp' });
+                res.end(data);
+            }
+        });
+    } else if (req.url == "/assets/placeholder_image.webp") {
+        const jsPath = path.join(__dirname, 'assets', 'placeholder_image.webp');
         fs.readFile(jsPath, (err, data) => {
             if (err) {
                 res.writeHead(404, { 'Content-Type': 'text/plain' });
