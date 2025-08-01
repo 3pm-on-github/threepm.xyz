@@ -1,6 +1,6 @@
 // cloudflare server, DO NOT STOP!!!!!
 // ip: https://localhost:7008
-// use nodemon server.js to run this server
+// use nodemon --ext js,html,css server.js to run this server
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
