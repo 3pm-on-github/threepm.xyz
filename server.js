@@ -7,12 +7,11 @@ const path = require('path');
 
 const port = 7008;
 
-let visitorcount = 260; // initial visitor count
-visitorcount = parseInt(fs.readFileSync('visits.txt', 'utf8'));
+let visitorcount = parseInt(fs.readFileSync('visits.txt', 'utf8'));
 
 function newVisitor() {
     visitorcount++;
-    fs.writeFileSync('visits.txt', visitorcount);
+    fs.writeFileSync('visits.txt', String(visitorcount));
 }
 
 const server = http.createServer((req, res) => {
