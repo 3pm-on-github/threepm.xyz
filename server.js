@@ -170,7 +170,7 @@ const server = http.createServer((req, res) => {
         res.writeHead(418, { 'Content-Type': 'text/plain' });
         res.end('you found an easter egg!!! anyway im a teapot');
     } else if (req.url == "/api/v1/addvisitor") {
-        visitorcount = visitorcount + 1;
+        newVisitor();
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end("done");
     } else if (req.url == "/api/v1/visitorcount") {
