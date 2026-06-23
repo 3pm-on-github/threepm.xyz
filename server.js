@@ -8,7 +8,7 @@ const path = require('path');
 const port = 7008;
 
 let visitorcount = 260; // initial visitor count
-visitorcount = fs.readFileSync('visits.txt', 'utf8');
+visitorcount = parseInt(fs.readFileSync('visits.txt', 'utf8'));
 
 function newVisitor() {
     visitorcount++;
