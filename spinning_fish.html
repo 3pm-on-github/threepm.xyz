@@ -15,7 +15,7 @@ body {
         </style>
     </head>
     <body style="display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
-        <p id="msg" style="display: none; margin: 0 auto;">accept autoplay to start the fish</p>
+        <button id="msg" style="display: none; margin: 0 auto;">click this or allow autoplay to start the fish</button>
         <video id="fish" src="/assets/spinning_fish.mov" style="display: block; margin: 0 auto;" loop>
     </body>
     <script>
@@ -31,5 +31,11 @@ function tryAutoplay(mediaEl) {
     }
 }
 tryAutoplay(document.getElementById("fish"))
+
+document.getElementById("msg").onclick = () => {
+    document.getElementById("fish").play();
+    document.getElementById("msg").style.display = "none";
+    document.getElementById("fish").style.display = "block";
+}
     </script>
 </html>
