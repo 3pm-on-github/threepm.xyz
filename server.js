@@ -1,11 +1,10 @@
-// cloudflare server, DO NOT STOP!!!!!
-// ip: https://localhost:7008
-// use nodemon --ext js,html,css server.js to run this server
-const http = require('http');
+const express = require('express');
+const http = require("http")
 const fs = require('fs');
 const path = require('path');
 
 const port = 7008;
+const app = express();
 
 let visitorcount = parseInt(fs.readFileSync('visits.txt', 'utf8'));
 
@@ -14,205 +13,162 @@ function newVisitor() {
     fs.writeFileSync('visits.txt', String(visitorcount));
 }
 
-const server = http.createServer((req, res) => {
-    if (req.url === "/") {
-        const htmlPath = path.join(__dirname, 'index.html');
-        fs.readFile(htmlPath, (err, data) => {
-            if (err) {
-                res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: contact@threepm.xyz');
-            } else {
-                res.writeHead(200, { 'Content-Type': 'text/html' });
-                res.end(data);
-            }
-        });
-    } else if (req.url === '/style.css') {
-        const cssPath = path.join(__dirname, 'style.css');
-        fs.readFile(cssPath, (err, data) => {
-            if (err) {
-                res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: contact@threepm.xyz');
-            } else {
-                res.writeHead(200, { 'Content-Type': 'text/css' });
-                res.end(data);
-            }
-        });
-    } else if (req.url === '/assets/88x31s/mainwebsite.gif') {
-        const imagePath = path.join(__dirname, 'assets', "88x31s", 'mainwebsite.gif');
-        fs.readFile(imagePath, (err, data) => {
-            if (err) {
-                res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.end('ah shet, cant find the 88x31 😔');
-            } else {
-                res.writeHead(200, { 'Content-Type': 'image/gif' });
-                res.end(data);
-            }
-        });
-    } else if (req.url === '/assets/88x31s/usewaterfox.jpg') {
-        const imagePath = path.join(__dirname, 'assets', "88x31s", 'usewaterfox.jpg');
-        fs.readFile(imagePath, (err, data) => {
-            if (err) {
-                res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.end('ah shet, cant find the 88x31 😔');
-            } else {
-                res.writeHead(200, { 'Content-Type': 'image/jpeg' });
-                res.end(data);
-            }
-        });
-    } else if (req.url === '/assets/3pm.mp3') {
-        const imagePath = path.join(__dirname, 'assets', '3pm.mp3');
-        fs.readFile(imagePath, (err, data) => {
-            if (err) {
-                res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.end('ah shet, cant find the mp3 😔');
-            } else {
-                res.writeHead(200, { 'Content-Type': 'audio/mpeg' });
-                res.end(data);
-            }
-        });
-    } else if (req.url === '/assets/click.wav') {
-        const imagePath = path.join(__dirname, 'assets', 'click.wav');
-        fs.readFile(imagePath, (err, data) => {
-            if (err) {
-                res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.end('ah shet, cant find the mp3 😔');
-            } else {
-                res.writeHead(200, { 'Content-Type': 'audio/wav' });
-                res.end(data);
-            }
-        });
-    } else if (req.url === '/my88x31s') {
-        const htmlPath = path.join(__dirname, 'my88x31s', 'index.html');
-
-        fs.readFile(htmlPath, (err, data) => {
-            if (err) {
-                res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: contact@threepm.xyz');
-            } else {
-                res.writeHead(200, { 'Content-Type': 'text/html' });
-                res.end(data);
-            }
-        });
-    } else if (req.url === '/coolmusics') {
-        const htmlPath = path.join(__dirname, 'coolmusics', 'index.html');
-
-        fs.readFile(htmlPath, (err, data) => {
-            if (err) {
-                res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: contact@threepm.xyz');
-            } else {
-                res.writeHead(200, { 'Content-Type': 'text/html' });
-                res.end(data);
-            }
-        });
-    } else if (req.url === '/projects') {
-        const htmlPath = path.join(__dirname, 'projects', 'index.html');
-
-        fs.readFile(htmlPath, (err, data) => {
-            if (err) {
-                res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: contact@threepm.xyz');
-            } else {
-                res.writeHead(200, { 'Content-Type': 'text/html' });
-                res.end(data);
-            }
-        });
-    } else if (req.url === '/placeholder') {
-        const htmlPath = path.join(__dirname, 'placeholder.html');
-
-        fs.readFile(htmlPath, (err, data) => {
-            if (err) {
-                res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: contact@threepm.xyz');
-            } else {
-                res.writeHead(200, { 'Content-Type': 'text/html' });
-                res.end(data);
-            }
-        });
-    } else if (req.url === '/projects/nlang') {
-        const htmlPath = path.join(__dirname, 'projects', 'nlang', 'index.html');
-
-        fs.readFile(htmlPath, (err, data) => {
-            if (err) {
-                res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: contact@threepm.xyz');
-            } else {
-                res.writeHead(200, { 'Content-Type': 'text/html' });
-                res.end(data);
-            }
-        });
-    } else if (req.url === '/projects/roudice') {
-        const htmlPath = path.join(__dirname, 'projects', 'roudice', 'index.html');
-
-        fs.readFile(htmlPath, (err, data) => {
-            if (err) {
-                res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: contact@threepm.xyz');
-            } else {
-                res.writeHead(200, { 'Content-Type': 'text/html' });
-                res.end(data);
-            }
-        });
-    } else if (req.url === '/projects/archive') {
-        const htmlPath = path.join(__dirname, 'projects', 'archive', 'index.html');
-
-        fs.readFile(htmlPath, (err, data) => {
-            if (err) {
-                res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: contact@threepm.xyz');
-            } else {
-                res.writeHead(200, { 'Content-Type': 'text/html' });
-                res.end(data);
-            }
-        });
-    } else if (req.url === '/teapot') {
-        res.writeHead(418, { 'Content-Type': 'text/plain' });
-        res.end('you found an easter egg!!! anyway im a teapot');
-    } else if (req.url == "/api/v1/addvisitor") {
-        newVisitor();
-        res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end("done");
-    } else if (req.url == "/api/v1/visitorcount") {
-        res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end(String(visitorcount));
-    } else if (req.url == "/script.js") {
-        const jsPath = path.join(__dirname, 'script.js');
-        fs.readFile(jsPath, (err, data) => {
-            if (err) {
-                res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: contact@threepm.xyz');
-            } else {
-                res.writeHead(200, { 'Content-Type': 'text/javascript' });
-                res.end(data);
-            }
-        });
-    } else if (req.url == "/assets/lilguy.webp") {
-        const jsPath = path.join(__dirname, 'assets', 'lil guy.webp');
-        fs.readFile(jsPath, (err, data) => {
-            if (err) {
-                res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: contact@threepm.xyz');
-            } else {
-                res.writeHead(200, { 'Content-Type': 'image/webp' });
-                res.end(data);
-            }
-        });
-    } else if (req.url == "/assets/placeholder_image.webp") {
-        const jsPath = path.join(__dirname, 'assets', 'placeholder_image.webp');
-        fs.readFile(jsPath, (err, data) => {
-            if (err) {
-                res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.end('apparently the file that i tried to give doesnt exist so... email me saying that the file doesnt exist anymore: contact@threepm.xyz');
-            } else {
-                res.writeHead(200, { 'Content-Type': 'image/webp' });
-                res.end(data);
-            }
-        });
+function log(ip, path, status_code, message=null) {
+    if (message) {
+        console.log(`[${ip}] ${path} (${status_code}): ${message}`)
     } else {
-        res.writeHead(404, { 'Content-Type': 'text/plain' });
-        res.end('this webpage doesnt exist, might go back?');
+        console.log(`[${ip}] ${path} (${status_code})`)
     }
+}
+
+// websites
+
+app.get('/', (req, res) => {
+    res.set('Content-Type', 'text/html');
+    res.status(200);
+    log(req.ip, req.url, res.statusCode);
+    const htmlPath = path.join(__dirname, 'index.html');
+    res.send(fs.readFileSync(htmlPath))
 });
-server.listen(port, '0.0.0.0', () => {
-    console.log(`Server running at http://localhost:${port}`);
+
+app.get('/placeholder', (req, res) => {
+    res.set('Content-Type', 'text/html');
+    res.status(200);
+    log(req.ip, req.url, res.statusCode);
+    const htmlPath = path.join(__dirname, 'placeholder.html');
+    res.send(fs.readFileSync(htmlPath))
+});
+
+app.get('/spinningfish', (req, res) => {
+    res.set('Content-Type', 'text/html');
+    res.status(200);
+    log(req.ip, req.url, res.statusCode);
+    const htmlPath = path.join(__dirname, 'spinning_fish.html');
+    res.send(fs.readFileSync(htmlPath))
+});
+
+app.get('/88x31s', (req, res) => {
+    res.set('Content-Type', 'text/html');
+    res.status(200);
+    log(req.ip, req.url, res.statusCode);
+    const htmlPath = path.join(__dirname, '88x31s', 'index.html');
+    res.send(fs.readFileSync(htmlPath))
+});
+
+app.get('/projects', (req, res) => {
+    res.set('Content-Type', 'text/html');
+    res.status(200);
+    log(req.ip, req.url, res.statusCode);
+    const htmlPath = path.join(__dirname, 'projects', 'index.html');
+    res.send(fs.readFileSync(htmlPath))
+});
+
+app.get('/projects/roudice', (req, res) => {
+    res.set('Content-Type', 'text/html');
+    res.status(200);
+    log(req.ip, req.url, res.statusCode);
+    const htmlPath = path.join(__dirname, 'projects', 'roudice', 'index.html');
+    res.send(fs.readFileSync(htmlPath))
+});
+
+// files
+
+app.get('/script.js', (req, res) => {
+    res.set('Content-Type', 'text/javascript');
+    res.status(200);
+    log(req.ip, req.url, res.statusCode);
+    const jsPath = path.join(__dirname, 'script.js');
+    res.send(fs.readFileSync(jsPath))
+});
+
+app.get('/style.css', (req, res) => {
+    res.set('Content-Type', 'text/css');
+    res.status(200);
+    log(req.ip, req.url, res.statusCode);
+    const cssPath = path.join(__dirname, 'style.css');
+    res.send(fs.readFileSync(cssPath))
+});
+
+app.get('/assets/88x31s/mainwebsite.gif', (req, res) => {
+    res.set('Content-Type', 'image/gif');
+    res.status(200);
+    log(req.ip, req.url, res.statusCode);
+    const gifPath = path.join(__dirname, 'assets', "88x31s", 'mainwebsite.gif');
+    res.send(fs.readFileSync(gifPath))
+});
+
+app.get('/assets/88x31s/usewaterfox.jpg', (req, res) => {
+    res.set('Content-Type', 'image/jpeg');
+    res.status(200);
+    log(req.ip, req.url, res.statusCode);
+    const jpgPath = path.join(__dirname, 'assets', "88x31s", 'usewaterfox.jpg');
+    res.send(fs.readFileSync(jpgPath))
+});
+
+app.get('/assets/lilguy.webp', (req, res) => {
+    res.set('Content-Type', 'image/webp');
+    res.status(200);
+    log(req.ip, req.url, res.statusCode);
+    const jpgPath = path.join(__dirname, 'assets', 'lil guy.webp');
+    res.send(fs.readFileSync(jpgPath))
+});
+
+app.get('/assets/placeholder_image.webp', (req, res) => {
+    res.set('Content-Type', 'image/webp');
+    res.status(200);
+    log(req.ip, req.url, res.statusCode);
+    const jpgPath = path.join(__dirname, 'assets', 'placeholder_image.webp');
+    res.send(fs.readFileSync(jpgPath))
+});
+
+app.get('/assets/spinning_fish.mov', (req, res) => {
+    res.set('Content-Type', 'video/mov');
+    res.status(200);
+    log(req.ip, req.url, res.statusCode);
+    const movPath = path.join(__dirname, 'assets', 'spinning_fish.mov');
+    res.send(fs.readFileSync(movPath))
+});
+
+app.get('/assets/3pm.mp3', (req, res) => {
+    res.set('Content-Type', 'audio/mpeg');
+    res.status(200);
+    log(req.ip, req.url, res.statusCode);
+    const mp3Path = path.join(__dirname, 'assets', '3pm.mp3');
+    res.send(fs.readFileSync(mp3Path))
+});
+
+app.get('/assets/click.wav', (req, res) => {
+    res.set('Content-Type', 'audio/wav');
+    res.status(200);
+    log(req.ip, req.url, res.statusCode);
+    const wavPath = path.join(__dirname, 'assets', 'click.wav');
+    res.send(fs.readFileSync(wavPath))
+});
+
+// API, other random stuff
+
+app.get("/teapot", (req, res) => {
+    res.set('Content-Type', "text/plain");
+    res.status(418);
+    log(req.ip, req.url, res.statusCode);
+    res.send('you found an easter egg!!! anyways i\'m a teapot')
+})
+
+app.get("/api/v1/addvisitor", (req, res) => {
+    newVisitor();
+    res.set('Content-Type', "text/plain");
+    res.status(200);
+    log(req.ip, req.url, res.statusCode);
+    res.send('done')
+})
+
+app.get("/api/v1/visitorcount", (req, res) => {
+    res.set('Content-Type', "text/plain");
+    res.status(200);
+    log(req.ip, req.url, res.statusCode);
+    res.send(String(visitorcount))
+})
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });

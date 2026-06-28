@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>spinning fish</title>
+        <style>
+body {
+    background-color: rgb(27, 37, 18);
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+}
+        </style>
+    </head>
+    <body style="display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
+        <p id="msg" style="display: none; margin: 0 auto;">accept autoplay to start the fish</p>
+        <video id="fish" src="/assets/spinning_fish.mov" style="display: block; margin: 0 auto;" loop>
+    </body>
+    <script>
+function tryAutoplay(mediaEl) {
+    const playPromise = mediaEl.play();
+
+    if (playPromise !== undefined) {
+        playPromise
+        .catch((err) => {
+            document.getElementById("msg").style.display = "block";
+            document.getElementById("fish").style.display = "none";
+        });
+    }
+}
+tryAutoplay(document.getElementById("fish"))
+    </script>
+</html>

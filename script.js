@@ -1,7 +1,7 @@
 console.log("3pm was here :3");
-fetch("https://threepm.xyz/api/v1/addvisitor");
+fetch("/api/v1/addvisitor");
 
-fetch("https://threepm.xyz/api/v1/visitorcount").then((response) => {
+fetch("/api/v1/visitorcount").then((response) => {
     response.text().then((text) => {
         document.getElementById("visitorcount").innerText = "Visitors: " + text;
     });
