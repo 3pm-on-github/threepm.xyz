@@ -105,6 +105,14 @@ app.get('/assets/88x31s/usewaterfox.jpg', (req, res) => {
     res.send(fs.readFileSync(jpgPath))
 });
 
+app.get('/assets/88x31s/spinningfish.gif', (req, res) => {
+    res.set('Content-Type', 'image/gif');
+    res.status(200);
+    log(req.ip, req.url, res.statusCode);
+    const gifPath = path.join(__dirname, 'assets', "88x31s", 'spinningfish.gif');
+    res.send(fs.readFileSync(gifPath))
+});
+
 app.get('/assets/lilguy.webp', (req, res) => {
     res.set('Content-Type', 'image/webp');
     res.status(200);
