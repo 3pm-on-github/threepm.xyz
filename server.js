@@ -105,6 +105,14 @@ app.get('/assets/88x31s/usewaterfox.jpg', (req, res) => {
     res.send(fs.readFileSync(jpgPath))
 });
 
+app.get('/assets/88x31s/addmy88x31.png', (req, res) => {
+    res.set('Content-Type', 'image/png');
+    res.status(200);
+    log(req.ip, req.url, res.statusCode);
+    const pngPath = path.join(__dirname, 'assets', "88x31s", 'addmy88x31.png');
+    res.send(fs.readFileSync(pngPath))
+});
+
 app.get('/assets/88x31s/spinningfish.gif', (req, res) => {
     res.set('Content-Type', 'image/gif');
     res.status(200);
@@ -118,6 +126,14 @@ app.get('/assets/lilguy.webp', (req, res) => {
     res.status(200);
     log(req.ip, req.url, res.statusCode);
     const jpgPath = path.join(__dirname, 'assets', 'lil guy.webp');
+    res.send(fs.readFileSync(jpgPath))
+});
+
+app.get('/assets/phnp.png', (req, res) => {
+    res.set('Content-Type', 'image/png');
+    res.status(200);
+    log(req.ip, req.url, res.statusCode);
+    const jpgPath = path.join(__dirname, 'assets', 'phnp.png');
     res.send(fs.readFileSync(jpgPath))
 });
 

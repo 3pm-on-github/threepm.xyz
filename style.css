@@ -41,23 +41,6 @@ body {
     font-size: 47px;
 }
 
-.addmy88x31s {
-    font-size: 15px;
-}
-
-.coolmusics {
-    margin-left: 580px;
-    font-size: 30px;
-    display: block;
-}
-.projects {
-    position: absolute;
-    text-align: center;
-    margin-top: 46%;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
 .visitors {
     position: absolute;
     text-align: center;
