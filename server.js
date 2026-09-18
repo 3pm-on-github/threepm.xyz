@@ -129,14 +129,6 @@ app.get('/assets/lilguy.webp', (req, res) => {
     res.send(fs.readFileSync(jpgPath))
 });
 
-app.get('/assets/phnp.png', (req, res) => {
-    res.set('Content-Type', 'image/png');
-    res.status(200);
-    log(req.ip, req.url, res.statusCode);
-    const jpgPath = path.join(__dirname, 'assets', 'phnp.png');
-    res.send(fs.readFileSync(jpgPath))
-});
-
 app.get('/assets/placeholder_image.webp', (req, res) => {
     res.set('Content-Type', 'image/webp');
     res.status(200);
